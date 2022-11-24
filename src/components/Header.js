@@ -6,7 +6,7 @@ function Header() {
         <header className="App-header">
         <nav>
           <div className="nav-div container">
-            Fun With Triangles
+            Traingle Fest
             <ul className="nav-list">
               <li className="list-inline link-active">
                 <Link to="/is-triangle">Is Triangle?</Link>

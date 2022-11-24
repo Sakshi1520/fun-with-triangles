@@ -6,8 +6,16 @@ function Hypotenuse() {
   const [result, setResult] = useState("");
 
   function getResult() {
-    const hypotenuse = Math.sqrt(side1 * side1 + side2 * side2);
-    setResult("The Hypotenuse is: " + hypotenuse + " units");
+    if (side1 && side2) {
+      if (side1 > 0 && side2 > 0) {
+        const hypotenuse = Math.sqrt(side1 * side1 + side2 * side2);
+        setResult("The Hypotenuse is: " + Math.round(hypotenuse * 100) / 100 + " units");
+      } else {
+        setResult("Length of side must be a positive value");
+      }
+    } else {
+      setResult("Enter all values");
+    }
   }
 
   return (

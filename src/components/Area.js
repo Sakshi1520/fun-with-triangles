@@ -1,18 +1,31 @@
 import React, { useState } from "react";
 
 function Area() {
-  const [side1, setSide1] = useState([]);
-  const [side2, setSide2] = useState([]);
-  const [side3, setSide3] = useState([]);
+  const [side1, setSide1] = useState();
+  const [side2, setSide2] = useState();
+  const [side3, setSide3] = useState();
   const [result, setResult] = useState("");
 
   function getResult() {
+    if (side1 && side2 && side3) {
+      if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
+        setResult("Length of side must be a positive value");
+      } else {
+        const area = calculateArea();
+        setResult("The area is: " + Math.round(area * 100) / 100);
+      }
+    } else {
+      setResult("Enter all values");
+    }
+  }
+
+  function calculateArea() {
     const s = (+side1 + +side2 + +side3) / 2;
     const s1 = s - side1;
     const s2 = s - side2;
     const s3 = s - side3;
-    const area = Math.sqrt(s*s1*s2*s3);
-    setResult("The area is: " + Math.round(area * 100) / 100);
+    const area = Math.sqrt(s * s1 * s2 * s3);
+    return area;
   }
 
   return (
